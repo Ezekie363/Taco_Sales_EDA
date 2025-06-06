@@ -5,63 +5,63 @@ df = pd.read_csv('taco_sales_(2024-2025)_副本.csv')
 # print(df.columns) //查看数据字段
 
 
-# # 1.按城市分组查看taco店的数量并排序
-# taco_restaurant_num = df.groupby(['Location'])['Restaurant Name'].count().sort_values(ascending=False)
-# print("Q1",taco_restaurant_num)
-#
-# # 2.各个城市taco店的平均送达时间
-# taco_delivery_time = df.groupby(['Location'])['Delivery Duration (min)'].mean().round().sort_values(ascending=True)
-# print("Q2",taco_delivery_time)
-#
-# # 3.taco类型有多少种
-# taco_type = df['Taco Type'].unique()
-# print("Q3",taco_type)
-#
-# # 4.加小料的taco与加小料的占比为多少
-#
-# # 计算不加小料的订单总和
-# no_toppings = (df['Toppings Count'] == 0).sum()
-# # 计算加小料的订单总和
-# taco_toppings = (df['Toppings Count'] > 0).sum()
-#
-# # 计算加小料的taco占总体的比率
-# toppings_rate1 = round(taco_toppings / (taco_toppings + no_toppings), 2)
-#
-# # 计算不加小料的taco占总体的比率
-# toppings_rate2 = round(no_toppings / (taco_toppings + no_toppings), 2)
-# print("Q4.1",toppings_rate1)
-# print("Q4.2",toppings_rate2)
+# 1.按城市分组查看taco店的数量并排序
+taco_restaurant_num = df.groupby(['Location'])['Restaurant Name'].count().sort_values(ascending=False)
+print("Q1",taco_restaurant_num)
 
-# # 5.周末下单的数量与非周末下单的数量比为多少
-# weekend_order = df['Weekend Order'].sum() #周末下单
-# non_weekend_order = (~df['Weekend Order']).sum() #非周末下单
-#
-# weekend_order_rate1 = round(weekend_order / (weekend_order + non_weekend_order), 2)
-# weekend_order_rate2 = round(non_weekend_order / (weekend_order + non_weekend_order), 2)
-#
-# print("Q5.1",weekend_order_rate1)
-# print("Q5.2",weekend_order_rate2)
-#
-# # 6.下单各个taco size的数量排序
-# taco_size_sort = df['Taco Size'].value_counts().sort_values()
-# print("Q6",taco_size_sort)
-#
-#
-# # 7.加小料的taco平均价格为多少
-# taco_toppings_price = df[df['Toppings Count'] > 0]['Price ($)'].mean().round(2)
-# taco_non_toppings_price = df[df['Toppings Count'] ==0]['Price ($)'].mean().round(2) #不加小料的taco平均价格
-#
-# print("Q7.1",taco_toppings_price)
-# print("Q7.2",taco_non_toppings_price)
-#
-# # 9.小费平均价格为多少
-# tip_mean = df['Tip ($)'].mean().round(2)
-# print("Q9",tip_mean)
-#
-# # 小费占taco价格的百分之多少
-# taco_mean_price = df['Price ($)'].mean().round(2)
-# taco_tip_rate = (tip_mean / taco_mean_price).round(2)
-# print("Q9.1",taco_tip_rate)
+# 2.各个城市taco店的平均送达时间
+taco_delivery_time = df.groupby(['Location'])['Delivery Duration (min)'].mean().round().sort_values(ascending=True)
+print("Q2",taco_delivery_time)
+
+# 3.taco类型有多少种
+taco_type = df['Taco Type'].unique()
+print("Q3",taco_type)
+
+# 4.加小料的taco与加小料的占比为多少
+
+# 计算不加小料的订单总和
+no_toppings = (df['Toppings Count'] == 0).sum()
+# 计算加小料的订单总和
+taco_toppings = (df['Toppings Count'] > 0).sum()
+
+# 计算加小料的taco占总体的比率
+toppings_rate1 = round(taco_toppings / (taco_toppings + no_toppings), 2)
+
+# 计算不加小料的taco占总体的比率
+toppings_rate2 = round(no_toppings / (taco_toppings + no_toppings), 2)
+print("Q4.1",toppings_rate1)
+print("Q4.2",toppings_rate2)
+
+# 5.周末下单的数量与非周末下单的数量比为多少
+weekend_order = df['Weekend Order'].sum() #周末下单
+non_weekend_order = (~df['Weekend Order']).sum() #非周末下单
+
+weekend_order_rate1 = round(weekend_order / (weekend_order + non_weekend_order), 2)
+weekend_order_rate2 = round(non_weekend_order / (weekend_order + non_weekend_order), 2)
+
+print("Q5.1",weekend_order_rate1)
+print("Q5.2",weekend_order_rate2)
+
+# 6.下单各个taco size的数量排序
+taco_size_sort = df['Taco Size'].value_counts().sort_values()
+print("Q6",taco_size_sort)
+
+
+# 7.加小料的taco平均价格为多少
+taco_toppings_price = df[df['Toppings Count'] > 0]['Price ($)'].mean().round(2)
+taco_non_toppings_price = df[df['Toppings Count'] ==0]['Price ($)'].mean().round(2) #不加小料的taco平均价格
+
+print("Q7.1",taco_toppings_price)
+print("Q7.2",taco_non_toppings_price)
+
+# 9.小费平均价格为多少
+tip_mean = df['Tip ($)'].mean().round(2)
+print("Q9",tip_mean)
+
+# 小费占taco价格的百分之多少
+taco_mean_price = df['Price ($)'].mean().round(2)
+taco_tip_rate = (tip_mean / taco_mean_price).round(2)
+print("Q9.1",taco_tip_rate)
 
 
 # 10.taco type销量排序
